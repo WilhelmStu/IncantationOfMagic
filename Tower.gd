@@ -33,11 +33,11 @@ var costAuto = 30
 #following only for frostbolt
 var frost = null
 var damageFrost = 120
-var delayFrost = 5
+var delayFrost = 2
 
 var timerFrost
 var timerAutoFrostbolt
-var timerAutoDelayFrost = 8
+var timerAutoDelayFrost = 4
 
 var costDmgFrost = 10
 var costDelay = 20
@@ -198,7 +198,7 @@ func _on_ButtonFrostbolt_pressed():
 
 func _on_DmgFrostUP_pressed():
 	if game.money >= costDmgFrost:
-		damage += 20
+		damage += 40
 		game.money -= costDmgFrost
 		game.moneyLabel.text = str(game.money)
 	pass # Replace with function body.
@@ -218,7 +218,7 @@ func _on_AutoFrostbolt_pressed():
 			timerAutoFrostbolt.start()
 			game.money -= costAutoFrost
 			game.moneyLabel.text = str(game.money)
-			autoFireButton.text = "Autospeed (" + str(costAutoFrost) + ")"
+			autoFrostButton.text = "Autospeed (" + str(costAutoFrost) + ")"
 		else:	
 			if timerAutoDelayFrost > 0:
 				timerAutoDelayFrost *= 0.95
