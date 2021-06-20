@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Frostbolt.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.170543, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.186047, 0.68046, 1, 1, 0, 0.132813, 1, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 20, 5, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+scale_random = 0.57
+color_ramp = SubResource( 5 )
+
+[node name="Frostbolt" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 13
+mass = 0.0204082
+gravity_scale = 0.0
+contacts_reported = 5
+contact_monitor = true
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 35
+process_material = SubResource( 4 )
